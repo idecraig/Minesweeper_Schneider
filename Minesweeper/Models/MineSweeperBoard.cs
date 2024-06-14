@@ -1,24 +1,24 @@
 ﻿using MineSweeper.Enums;
 using MineSweeper.Interfaces;
-using MineSweeper.Enums;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace MineSweeper.Models
 {
-    public class MineSweeperBoard : IMineSweeperBoard
+    public partial class MineSweeperBoard : ObservableObject, IMineSweeperBoard
     {
-        public GameStatus Status { get; set; }
-        public string[,] Squares { get; set; }
-        public CellStatus[,] SquareStatus { get; set; }
-        public int Moves { get; set; }
-        public int Lives { get; set; }
-        public int Mines { get; set; }
-        public string CurrentPosition { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        public int CurrentXPosition { get; set; }
-        public int CurrentYPosition { get; set; }
+        [ObservableProperty] private GameStatus status;
+        [ObservableProperty] private string[,] squares;
+        [ObservableProperty] private CellStatus[,] squareStatus;
+        [ObservableProperty] private int moves;
+        [ObservableProperty] private int lives;
+        [ObservableProperty] private int mines;
+        [ObservableProperty] private string currentPosition;
+        [ObservableProperty] private int rows;
+        [ObservableProperty] private int columns;
+        [ObservableProperty] private int currentXPosition;
+        [ObservableProperty] private int currentYPosition;
         private int MaxRows;
-        private int MaxColumns;        
+        private int MaxColumns;
 
         public MineSweeperBoard(int numberOfLives = 3, int numberOfMines = 27, int rows = 8, int columns = 8, int startXPosition = 0, int startYPosition = 3)
         {
@@ -105,8 +105,8 @@ namespace MineSweeper.Models
 
                 if (this.SquareStatus[this.CurrentXPosition, this.CurrentYPosition] == CellStatus.Mined)
                 {
-                    this.Lives --;
-                    
+                    this.Lives--;
+
                     if (this.Lives == 0)
                     {
                         this.Status = GameStatus.Lost;

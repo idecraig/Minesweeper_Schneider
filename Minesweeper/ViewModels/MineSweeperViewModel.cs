@@ -1,9 +1,10 @@
-﻿using MineSweeper.Interfaces;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MineSweeper.Interfaces;
 using MineSweeper.Models;
 
 namespace MineSweeper.ViewModels
 {
-    public class MineSweeperViewModel : IMineSweeperViewModel
+    public partial class MineSweeperViewModel :  ObservableObject, IMineSweeperViewModel
     {
         public MineSweeperViewModel()
         {
@@ -11,7 +12,8 @@ namespace MineSweeper.ViewModels
         }
 
         #region public properties
-        public IMineSweeperBoard MineSweeperBoard { get; set; }
+        [ObservableProperty] private MineSweeperBoard mineSweeperBoard;
+
         #endregion
 
         #region public methods

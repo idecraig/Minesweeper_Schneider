@@ -1,4 +1,6 @@
 ﻿using MineSweeper.Enums;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace MineSweeper.Interfaces
 {
